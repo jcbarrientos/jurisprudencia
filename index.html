@@ -168,6 +168,8 @@
   .modal-card h3{ font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif; font-size:19px; margin:6px 0 14px; }
   .modal-card .m-field{ margin-top:13px; font-size:13.5px; }
   .modal-card .m-field b{ font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); display:block; margin-bottom:4px; font-weight:600; }
+  .modal-card .m-field.m-note{ border-left:2px solid var(--garnet); padding-left:11px; }
+  .modal-card .m-field.m-note b{ color:var(--garnet); }
   @keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
 
   /* ---------- Semilla ---------- */
@@ -362,7 +364,7 @@
       <div class="chip-strip-label">Lado positivo — sí hay protección, con límite temporal</div>
       <div class="chip-strip">
         <div class="chip" data-scp="SCP 0019/2017-S3"><span class="c-scp">SCP 0019/2017-S3</span><span class="c-tag">Provisorio protegido hasta institucionalización</span><span class="c-more">ver ficha ›</span></div>
-        <div class="chip" data-scp="SCP 0725/2020-S4"><span class="c-scp">SCP 0725/2020-S4</span><span class="c-tag">Carrera/libre nombramiento pierde relevancia</span><span class="c-more">ver ficha ›</span></div>
+        <div class="chip" data-scp="SCP 0725/2020-S4"><span class="c-scp">SCP 0725/2020-S4</span><span class="c-tag">Carrera/libre nombramiento "pierde relevancia" — lectura acotada, ver nota ↓</span><span class="c-more">ver ficha ›</span></div>
       </div>
       <div class="chip-strip-label">Lado negativo — fijan el límite (vigentes por el punto 8.3)</div>
       <div class="anchor-card limit">
@@ -374,6 +376,12 @@
         <div class="a-head"><span class="scp mono">SCP 0995/2016-S2</span><span class="badge b-menor">Límite negativo</span></div>
         <div class="a-field"><b>Acto lesivo</b>Consultora individual de línea con discapacidad física-motora (46%) del GAD de Tarija; no le renuevan el contrato al vencer el plazo.</div>
         <div class="a-field"><b>Precedente (FJ III.2)</b><q>Los consultores en línea, al no ser funcionarios públicos, no gozan de la misma protección que les asiste a dicho estamento laboral.</q></div>
+      </div>
+      <div class="anchor-card">
+        <div class="a-head"><span class="scp mono">¿Por qué SCP 0725/2020-S4 no desplaza el límite?</span><span class="badge b-mutadora">Aclaración metodológica</span></div>
+        <div class="a-field"><b>La tensión</b>SCP 0725/2020-S4 (2020) dice, en términos generales, que la distinción carrera/libre nombramiento "pierde relevancia" — lo que, leído literalmente, contradice a SCP 0776/2016-S3.</div>
+        <div class="a-field"><b>Por qué se trata como caso acotado, no como mutación</b>(i) No cita ni discute la doctrina de 2016 — se apoya en precedentes anteriores (SSCC 2758/2010-R, 059/2012-R), sin advertir la contradicción. (ii) El remedio concedido fue la reubicación en otra dependencia, no la restitución al cargo de confianza — preserva la discrecionalidad sobre ese puesto específico. (iii) El vicio del caso es extremo (cese el mismo día, sin ningún proceso), lo que permite leer la ratio centrada en la ausencia de debido proceso, no en un rechazo general de la distinción. (iv) Es una sola sentencia de Sala frente a una doctrina asentada en dos Salas durante cuatro años.</div>
+        <div class="a-field"><b>Honestidad metodológica</b>Aplicado de forma literal, el criterio del "estándar más alto" (SCP 2233/2013 — preferir la lectura más protectora) podría sugerir la conclusión contraria. Es una tensión real, señalada aquí de forma explícita en vez de resuelta por omisión.</div>
       </div>
     </div>
 
@@ -521,7 +529,8 @@
     },
     'SCP 0725/2020-S4': { tipo: 'Moduladora',
       acto: 'Secretaria de Despacho del Tribunal Supremo de Justicia, tutora judicial de su hermano con discapacidad intelectual (72%), cesada el mismo día en que acreditó esa condición.',
-      precedente: 'FJ III.2: «la diferenciación… respecto de los funcionarios de carrera y de libre nombramiento… tratándose de trabajadores con discapacidad o que tengan bajo su dependencia a personas con discapacidad… resulta innecesaria».'
+      precedente: 'FJ III.2: «la diferenciación… respecto de los funcionarios de carrera y de libre nombramiento… tratándose de trabajadores con discapacidad o que tengan bajo su dependencia a personas con discapacidad… resulta innecesaria».',
+      nota: 'Esta fórmula contradice, leída en abstracto, a la SCP 0776/2016-S3 (8.3). No se trata como estándar vigente porque: no cita ni discute esa doctrina de 2016 (se apoya en SSCC 2758/2010-R y 059/2012-R); el remedio concedido fue la reubicación en otra dependencia, no la restitución al cargo de confianza; y el vicio del caso —cese el mismo día, sin proceso alguno— permite leer la ratio centrada en la falta de debido proceso, no en un rechazo general de la distinción carrera/libre nombramiento. Ver 7.2.3, 7.3 y 8.3 del análisis dinámico.'
     },
     'SCP 1156/2014': { tipo: 'Moduladora',
       acto: 'Secretaria del Tribunal Nacional de Honor del CONALAB, despedida como "cargo de confianza"; invocaba tener bajo su dependencia a su hermana con discapacidad visual (82%), mayor de edad.',
@@ -542,7 +551,8 @@
       '<div class="m-eyebrow' + (info.tipo === 'Mutadora' ? ' mutadora' : '') + '">' + info.tipo + '</div>' +
       '<h3 class="scp mono">' + scp + '</h3>' +
       '<div class="m-field"><b>Acto lesivo</b>' + info.acto + '</div>' +
-      '<div class="m-field"><b>Precedente</b>' + info.precedente + '</div>';
+      '<div class="m-field"><b>Precedente</b>' + info.precedente + '</div>' +
+      (info.nota ? '<div class="m-field m-note"><b>Nota metodológica</b>' + info.nota + '</div>' : '');
     modalCard.querySelector('.m-close').addEventListener('click', closeModal);
     modalOverlay.classList.add('show');
   }
@@ -624,7 +634,7 @@
     n(3,'04.07.2016','SCP 0776/2016-S3','minor','Confirmadora — límite negativo','Los cargos de libre nombramiento o de confianza no gozan de inamovilidad por discapacidad, así el trabajador tenga un dependiente con discapacidad acreditada.', {anchor:true}),
     n(3,'07.10.2016','SCP 0995/2016-S2','minor','Confirmadora — límite negativo','Los consultores individuales de línea (DS 0181) no son trabajadores ni servidores públicos; no gozan de inamovilidad.', {anchor:true}),
     n(3,'08.02.2017','SCP 0019/2017-S3','moduladora','Moduladora','Extiende la protección a funcionarios provisorios en vía de institucionalización, con límite temporal hasta que ésta concluya.'),
-    n(3,'12.11.2020','SCP 0725/2020-S4','moduladora','Moduladora','La distinción entre carrera y libre nombramiento pierde relevancia para la inamovilidad por discapacidad (acotada a su caso concreto).'),
+    n(3,'12.11.2020','SCP 0725/2020-S4','moduladora','Moduladora','La distinción entre carrera y libre nombramiento "pierde relevancia" para la inamovilidad por discapacidad — pero no cita ni discute la doctrina de 2016 (SCP 0776/2016-S3) y el remedio concedido fue la reubicación, no la restitución al cargo; se trata como aplicación acotada a su caso, no como mutación (ver nota en 7.2.3).'),
 
     // 7.2.4 Reestructuración
     n(4,'31.05.2017','SCP 0488/2017-S1','fundadora','Fundadora','La inamovilidad prevalece pese a reestructuración o supresión de la entidad si sus funciones son asumidas por otra; modula además el límite de edad (discapacidad permanente).', {anchor:true}),
@@ -703,7 +713,7 @@
     {id:'8.3', title:'Provisorios y libre nombramiento', dashed:false,
       sub:'SCP 0019/2017-S3 · SCP 0776/2016-S3 · SCP 0995/2016-S2',
       extracto:'SCP 0019/2017-S3, FJ III.2: la inamovilidad de un funcionario provisorio dura "únicamente hasta que la administración inicie y concluya el proceso de selección de personal e institucionalización".',
-      reconstruccion:'Un funcionario provisorio en proceso de institucionalización goza de inamovilidad por discapacidad hasta que ese proceso concluya (SCP 0019/2017-S3); pero quien ocupa un cargo de libre nombramiento/confianza (SCP 0776/2016-S3) o presta servicios como consultor individual de línea (SCP 0995/2016-S2) queda fuera del ámbito subjetivo de la garantía.'},
+      reconstruccion:'Un funcionario provisorio en proceso de institucionalización goza de inamovilidad por discapacidad hasta que ese proceso concluya (SCP 0019/2017-S3); pero quien ocupa un cargo de libre nombramiento/confianza (SCP 0776/2016-S3) o presta servicios como consultor individual de línea (SCP 0995/2016-S2) queda fuera del ámbito subjetivo de la garantía. Nota: la SCP 0725/2020-S4 (2020) dice, en abstracto, que la distinción carrera/libre nombramiento "pierde relevancia" — pero no cita ni discute la doctrina de 2016, concede como remedio la reubicación (no la restitución al cargo de confianza), y resuelve un vicio de proceso extremo (cese el mismo día, sin ningún trámite). Por eso se trata como aplicación acotada a su caso, no como el estándar vigente de esta sub-línea — aunque, aplicado en abstracto, el criterio del "estándar más alto" (SCP 2233/2013) podría sugerir lo contrario.'},
     {id:'8.4', title:'Reestructuración institucional', dashed:false,
       sub:'SCP 0488/2017-S1',
       extracto:'FJ III.6: "…no es posible con el justificativo de reestructuración o supresión de un ministerio que a la vez sí será acogido por otro, se deje sin fuente laboral a personas con discapacidad…"',
