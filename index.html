@@ -437,7 +437,7 @@
 
     <div class="hub-wrap">
       <svg id="connectors"></svg>
-      <div class="hub" id="hub">
+      <div class="hub" id="hub" role="button" tabindex="0">
         <div class="hub-eyebrow">8.1 · Núcleo común</div>
         <div class="hub-title serif">SCP 0036/2024-S4</div>
         <div class="hub-sub">Titulares taxativos + regla de oportunidad</div>
@@ -709,14 +709,21 @@
       extracto:'FJ III.6: "…no es posible con el justificativo de reestructuración o supresión de un ministerio que a la vez sí será acogido por otro, se deje sin fuente laboral a personas con discapacidad…"',
       reconstruccion:'La reestructuración, fusión o supresión de una entidad pública no exime al empleador de la inamovilidad por discapacidad cuando las funciones de la entidad extinguida son asumidas por otra dentro del mismo Órgano del Estado.'},
     {id:'8.5', title:'Límite de edad del dependiente', dashed:true,
-      sub:'Remite al núcleo común (8.1)',
-      extracto:'No tiene precedente vigente independiente: la formulación vigente es la misma SCP 0036/2024-S4 del núcleo común (8.1), con el estándar "grave o muy grave" — más precisa que la aplicada en SCP 1156/2014 y SCP 0488/2017-S1 ("invalidez permanente" / favoris debilis).',
-      reconstruccion:'Sin contradicción: SCP 1156/2014 y SCP 0488/2017-S1 son antecedentes de aplicación consistente del mismo principio, bajo una formulación normativa menos precisa que la actual.'},
+      sub:'SCP 0036/2024-S4 (ver 8.1), con SCP 1156/2014 y SCP 0488/2017-S1 como antecedentes',
+      extracto:'SCP 0036/2024-S4, FJ III.1 (parte final): "En los dos últimos supuestos, el límite de edad se supera si la discapacidad es \'grave\' o \'muy grave\'." SCP 1156/2014, FJ III.6 (formulación previa, más estricta): deniega la tutela porque la dependiente, siendo mayor de dieciocho años, no acreditó "una declaratoria de invalidez permanente" en el Certificado Único de Discapacidad — la sola discapacidad significativa (82% visual) no bastó. SCP 0488/2017-S1, FJ III.6 (formulación previa, vía favoris debilis): "mientras los progenitores demuestren que la discapacidad de su hijo continúa, los mismos seguirán gozando del derecho a la inamovilidad laboral", aun cuando el hijo sea mayor de 18 años.',
+      reconstruccion:'La regla general es que la protección derivada (por padre/madre o tutor) solo alcanza a dependientes menores de 18 años. Si el dependiente ya es mayor de edad, la protección puede subsistir excepcionalmente, pero el estándar para probarlo ha ido precisándose: en 2014 (SCP 1156/2014) se exigía acreditar una "declaratoria de invalidez permanente"; en 2017 (SCP 0488/2017-S1) bastaba demostrar, en aplicación del principio favoris debilis, que la discapacidad "continúa" siendo de carácter permanente. La SCP 0036/2024-S4 sustituye ambas fórmulas por un estándar más preciso y verificable: exige que la discapacidad del dependiente mayor de edad esté calificada como "grave" o "muy grave", en lugar de remitir a nociones abiertas como "invalidez permanente" o la sola continuidad de la condición. Esta precisión no contradice a las sentencias anteriores, que constituyen aplicaciones tempranas del mismo principio bajo una formulación normativa menos exacta que la actualmente vigente.'},
     {id:'8.6', title:'Acción de libertad', dashed:false,
       sub:'SCP 0122/2015-S1',
       extracto:'FJ III.4: "Para tutelar el derecho a la vida como causa para la reincorporación a la fuente de trabajo, es preciso que el accionante: 1) No cuente con procesos sustanciados que comprometan su idoneidad; 2) […] no hubiera ingresado al cargo por elección, sino por nombramiento directo […]; y 3) No tener cuentas pendientes ni procesos con el Estado."',
       reconstruccion:'Cuando la destitución de una persona con discapacidad implica riesgo vital inminente por pérdida de cobertura de salud, procede excepcionalmente la acción de libertad — no solo el amparo — si concurren las tres condiciones señaladas.'}
   ];
+
+  var hubData = {id:'8.1', title:'Núcleo común', sub:'SCP 0036/2024-S4',
+    extracto:'FJ III.1: "Es posible concluir entonces que, las normas jurídicas antes expuestas precisan como titulares del derecho a la inamovilidad laboral por razón de discapacidad: 1) A la persona con discapacidad; 2) Al cónyuge de la persona con discapacidad; 3) A la madre o al padre de la persona menor de 18 años con discapacidad; y, 4) A la tutora o tutor de la persona menor de 18 años con discapacidad. En los dos últimos supuestos, el límite de edad se supera si la discapacidad es \'grave\' o \'muy grave\'." FJ III.2: "…si al tiempo de la desvinculación laboral de una trabajadora o un trabajador no se tiene acreditado o se acredita al empleador o entidad pública, con la documentación antes referida, que se tiene inamovilidad laboral por razones de discapacidad, este último no está en la obligación de proteger al primero; tomando en cuenta que, el ejercicio del señalado derecho fundamental debe materializarse ante su acreditación oportuna."',
+    reconstruccion:'Goza de inamovilidad laboral por discapacidad: (i) la propia persona con discapacidad; (ii) su cónyuge; (iii) el padre o la madre de un hijo menor de 18 años con discapacidad; o (iv) el tutor de una persona menor de 18 años con discapacidad — límite que se supera si la discapacidad del menor es "grave" o "muy grave". La sentencia corrige además la base legal: el art. 5 del DS 27477, que incluía a los "hermanos" como titulares, quedó abrogado por la Ley 223. A todo lo anterior se suma la regla de oportunidad: la documentación que acredita la titularidad debe ponerse en conocimiento del empleador al inicio de la relación laboral, durante su vigencia, o a más tardar al momento en que el trabajador conoce su desvinculación; si no se acreditó oportunamente, el empleador no está obligado a proteger, aunque el documento se consiga después.'};
+  var hubEl = document.getElementById('hub');
+  hubEl.addEventListener('click', function(){ openDetail(hubData, hubEl); });
+  hubEl.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDetail(hubData, hubEl); } });
 
   var spokesEl = document.getElementById('spokes');
   spokesData.forEach(function(sp){
